@@ -127,6 +127,7 @@ button:focus {
 }
 
 .meal-text p {
+  min-width: 390px;
   font-size: 22px;
   margin: 0px;
 }

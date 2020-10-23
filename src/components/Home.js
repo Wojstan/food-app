@@ -1,139 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import HomePicture from "../static/img/home.png";
 import arrowLeft from "../static/img/left.png";
 import arrowRight from "../static/img/right.png";
-import { Link } from "react-router-dom";
 
-import Meal from "./Meal";
-
-const meals = [
-  [
-    { title: "Kanapka letnia z szynką drobiową", link: "/breakfast" },
-    {
-      title:
-        "Koktajl lub Deser Prażone jabłka z cynamonem i płatkami owsianymi",
-      link: "/second",
-    },
-    { title: "Szybka ala grecka sałatka z pieczywem", link: "/lunch" },
-    { title: "Zapiekanka z kurczakiem i brokułami", link: "/dinner" },
-    { title: "Jogurt z owocami i orzechami", link: "/sapper" },
-  ],
-  [
-    { title: "Kanapka letnia z szynką drobiową", link: "/breakfast" },
-    {
-      title:
-        "Koktajl lub Deser Prażone jabłka z cynamonem i płatkami owsianymi",
-      link: "/second",
-    },
-    { title: "Szybka ala grecka sałatka z pieczywem", link: "/lunch" },
-    { title: "Zapiekanka z kurczakiem i brokułami", link: "/dinner" },
-    { title: "Jogurt z owocami i orzechami", link: "/sapper" },
-  ],
-
-  [
-    {
-      title: "Jajecznica lub jajo gotowane z warzywami i pieczywem",
-      link: "/breakfast",
-    },
-    {
-      title: "Koktajl kiwi banan szpinak",
-      link: "/second",
-    },
-    {
-      title: "Sałatka makaronowa z pesto, pomidorami i serem",
-      link: "/lunch",
-    },
-    {
-      title: "Grillowana pierś z kurczaka z warzywami na patelnię",
-      link: "/dinner",
-    },
-    { title: "Kapusta biała z koperkiem", link: "/sapper" },
-  ],
-
-  [
-    {
-      title: "Jajecznica lub jajo gotowane z warzywami i pieczywem",
-      link: "/breakfast",
-    },
-    {
-      title: "Koktajl kiwi banan szpinak",
-      link: "/second",
-    },
-    {
-      title: "Sałatka makaronowa z pesto, pomidorami i serem",
-      link: "/lunch",
-    },
-    {
-      title: "Grillowana pierś z kurczaka z warzywami na patelnię",
-      link: "/dinner",
-    },
-    { title: "Kapusta biała z koperkiem", link: "/sapper" },
-  ],
-
-  [
-    {
-      title: "Kanapka lub Tosty z mozzarellą i bazylią",
-      link: "/breakfast",
-    },
-    {
-      title: "Sałatka owocowa z jogurtem i slonecznikiem",
-      link: "/second",
-    },
-    {
-      title: "Dietetyczna sałatka gyros",
-      link: "/lunch",
-    },
-    {
-      title: "Dietetyczny gulasz z kurczakiem i kaszą",
-      link: "/dinner",
-    },
-    { title: "Zupa krem z brokułów na ostro", link: "/sapper" },
-  ],
-
-  [
-    {
-      title: "Kanapka lub Tosty z mozzarellą i bazylią",
-      link: "/breakfast",
-    },
-    {
-      title: "Sałatka owocowa z jogurtem i slonecznikiem",
-      link: "/second",
-    },
-    {
-      title: "Dietetyczna sałatka gyros",
-      link: "/lunch",
-    },
-    {
-      title: "Dietetyczny gulasz z kurczakiem i kaszą",
-      link: "/dinner",
-    },
-    { title: "Zupa krem z brokułów na ostro", link: "/sapper" },
-  ],
-
-  [
-    {
-      title: "Kanapka z awokado, z drobiem i warzywami",
-      link: "/breakfast",
-    },
-    {
-      title: "Koktajl pomarańczowy z natką",
-      link: "/second",
-    },
-    {
-      title: "Sernik light",
-      link: "/lunch",
-    },
-    {
-      title: "Tortilla z kurczakiem i warzywami",
-      link: "/dinner",
-    },
-    { title: "Zimowa zupa pomidorowa z passaty", link: "/sapper" },
-  ],
-];
-const date = new Date();
+import MealLink from "./MealLink";
 
 function Home() {
+  const date = new Date();
   const [today, setToday] = useState(date.getDay());
+  const [food, setFood] = useState({meals: []});
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const getResponse = await fetch(`http://localhost:4454/food/${today+1}`);
+      const repsonseData = await getResponse.json();
+      setFood(repsonseData);
+    }
+    
+    fetchData();
+    return function cleanup() {
+      setFood({meals: []});
+    }
+  },[today])
+
+
   const changeDay = (flag) => {
     if (flag === false) {
       if (today === 0) {
@@ -169,9 +61,9 @@ function Home() {
         </div>
 
         <div className="meal-container">
-          {meals[today].map((row, i) => (
-            <Link to={row.link} className="route-link">
-              <Meal title={row.title} number={i + 1} />
+          {food.meals.map((row,i) =>(
+            <Link key={i} to={`meal/${i+1}`} style={{ textDecoration: "none" }}>
+              <MealLink title = {row.title} number={i+1} />
             </Link>
           ))}
         </div>

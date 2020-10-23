@@ -1,17 +1,24 @@
-import React from "react";
-import arrow from "../static/img/Arrow.png";
+import React, { useState } from "react";
+import "../static/Meal.css";
 
-function Meal({ title, number }) {
+import header from "../static/img/header.png";
+import arrow from "../static/img/Arrow.png";
+import ingrid from "../static/img/ingrid.png";
+import list from "../static/img/list.png";
+
+const normalArrow = "rotate(0deg)";
+const rotateArrow = "rotate(90deg)";
+
+const date = new Date();
+
+function Meal() {
+
+  console.log("pierczur")
   return (
-    <div className="meal-menu">
-      <span className="number">
-        <h3>{number}</h3>
-      </span>
-      <span className="meal-text">
-        <p className="title-appear">{title}</p>
-      </span>
-      <img src={arrow} alt="" />
-    </div>
+    <div>
+    <h1>ESSSSAAAAA</h1>
+    <p>napis</p>
+</div>
   );
 }
 
