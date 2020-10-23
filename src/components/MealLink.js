@@ -3,15 +3,15 @@ import arrow from "../static/img/Arrow.png";
 
 function MealLink({ title, number }) {
   return (
-    <div className="meal-menu">
-      <span className="number">
+    <li>
+      <div className="number">
         <h3>{number}</h3>
-      </span>
-      <span className="meal-text">
+      </div>
+      <div className="meal-text">
         <p className="title-appear">{title}</p>
-      </span>
+      </div>
       <img src={arrow} alt="" />
-    </div>
+    </li>
   );
 }
 

@@ -9,22 +9,22 @@ import MealLink from "./MealLink";
 function Home() {
   const date = new Date();
   const [today, setToday] = useState(date.getDay());
-  const [food, setFood] = useState({meals: []});
+  const [food, setFood] = useState({ meals: [] });
 
-  
   useEffect(() => {
     const fetchData = async () => {
-      const getResponse = await fetch(`http://localhost:4454/food/${today+1}`);
+      const getResponse = await fetch(
+        `http://localhost:4454/food/${today + 1}`
+      );
       const repsonseData = await getResponse.json();
       setFood(repsonseData);
-    }
-    
+    };
+
     fetchData();
     return function cleanup() {
-      setFood({meals: []});
-    }
-  },[today])
-
+      setFood({ meals: [] });
+    };
+  }, [today]);
 
   const changeDay = (flag) => {
     if (flag === false) {
@@ -43,30 +43,36 @@ function Home() {
   };
 
   return (
-    <div className="home-card">
+    <div className="home">
       <div className="home-content">
-        <div className="home-head">
-          <span>
+        <header>
+          <div className="logo">
             <h1>Food</h1>
             <p className="day">Dzień - {today + 1}</p>
-          </span>
-          <span>
+          </div>
+          <div className="buttons">
             <button className="switch-day" onClick={() => changeDay(false)}>
               <img src={arrowLeft} alt="" />
             </button>
             <button className="switch-day" onClick={() => changeDay(true)}>
               <img src={arrowRight} alt="" />
             </button>
-          </span>
-        </div>
+          </div>
+        </header>
 
-        <div className="meal-container">
-          {food.meals.map((row,i) =>(
-            <Link key={i} to={`meal/${i+1}`} style={{ textDecoration: "none" }}>
-              <MealLink title = {row.title} number={i+1} />
-            </Link>
-          ))}
-        </div>
+        <nav>
+          <ul>
+            {food.meals.map((row, i) => (
+              <Link
+                key={i}
+                to={`meal/${i + 1}-${today}`}
+                style={{ textDecoration: "none" }}
+              >
+                <MealLink title={row.title} number={i + 1} />
+              </Link>
+            ))}
+          </ul>
+        </nav>
       </div>
 
       <img src={HomePicture} alt="" />
