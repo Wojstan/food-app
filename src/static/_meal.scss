@@ -1,26 +1,39 @@
+@import "./indicators";
+
 main {
+  width: 100%;
   box-shadow: 0 2px 4px 0 rgba(185, 185, 185, 0.2),
     0 3px 10px 0 rgba(206, 206, 206, 0.19);
-  width: 120vh;
-  width: 120vh;
   margin: 45px auto 0px auto;
   background-color: white;
   animation: dropdown 0.5s ease-in;
+  margin-bottom: 3vh;
 
-  header {
-    position: relative;
-    .title {
-      position: absolute;
-      top: 0%;
-      left: 0%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: 100%;
-      padding: 30px;
+  .main-header {
+    background-image: url("../static/img/header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 16vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vh;
+  }
+  .dot-3 {
+    display: flex;
+    div {
+      background-color: white;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-left: 4px;
     }
   }
+}
+
+.table-container {
+  overflow-x: auto;
 }
 
 table {

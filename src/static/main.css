@@ -1,22 +1,156 @@
+.indicators {
+  padding: 2vh;
+}
+
+.recipe {
+  background-color: #fb9d15;
+}
+
+.ingridients {
+  background-color: #ff710a;
+}
+
+.ingridients,
+.recipe {
+  margin-bottom: 2vh;
+}
+
+.ingridients header,
+.recipe header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vh;
+  color: white;
+}
+
+.ingridients header span,
+.recipe header span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ingridients header img,
+.recipe header img {
+  width: 5vh;
+}
+
+.ingridients button,
+.recipe button {
+  border: none;
+  background: none;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.ingridients p,
+.recipe p {
+  color: white;
+  font-size: 22px;
+  padding: 1vh;
+}
+
+.ingrid-number {
+  background-color: #e07f32;
+}
+
+.calories {
+  background-color: #cc2424;
+}
+
+.ingrid-number,
+.calories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+}
+
+.big-number {
+  font-size: 8.2vh;
+  color: white;
+  margin-bottom: 0.5vh;
+}
+
+.small-white {
+  color: white;
+  font-size: 28px;
+  padding-top: 10px;
+}
+
+.protein,
+.carbs,
+.fat,
+.fiber {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 20px;
+  height: 22vh;
+}
+
+.protein {
+  background-color: #f98a30;
+  margin-bottom: 2vh;
+}
+
+.carbs {
+  background-color: #d76010;
+  margin-bottom: 2vh;
+}
+
+.fat {
+  background-color: #c25213;
+}
+
+.fiber {
+  background-color: #ffc869;
+}
+
 main {
+  width: 100%;
   -webkit-box-shadow: 0 2px 4px 0 rgba(185, 185, 185, 0.2), 0 3px 10px 0 rgba(206, 206, 206, 0.19);
           box-shadow: 0 2px 4px 0 rgba(185, 185, 185, 0.2), 0 3px 10px 0 rgba(206, 206, 206, 0.19);
-  width: 120vh;
-  width: 120vh;
   margin: 45px auto 0px auto;
   background-color: white;
   -webkit-animation: dropdown 0.5s ease-in;
           animation: dropdown 0.5s ease-in;
+  margin-bottom: 3vh;
 }
 
-main header {
-  position: relative;
-}
-
-main header .title {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+main .main-header {
+  background-image: url("../static/img/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 16vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,9 +160,25 @@ main header .title {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 30px;
+  padding: 3vh;
+}
+
+main .dot-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .dot-3 div {
+  background-color: white;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-left: 4px;
+}
+
+.table-container {
+  overflow-x: auto;
 }
 
 table {

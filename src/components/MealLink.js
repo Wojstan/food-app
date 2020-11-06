@@ -1,5 +1,5 @@
 import React from "react";
-import arrow from "../static/img/Arrow.png";
+import arrow from "../static/img/arrow.png";
 
 function MealLink({ title, number }) {
   return (

@@ -1,0 +1,99 @@
+.indicators {
+  padding: 2vh;
+}
+
+.recipe {
+  background-color: #fb9d15;
+}
+
+.ingridients {
+  background-color: #ff710a;
+}
+
+.ingridients,
+.recipe {
+  margin-bottom: 2vh;
+  header {
+    span {
+      display: flex;
+      align-items: center;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh;
+    color: white;
+
+    img {
+      width: 5vh;
+    }
+  }
+  button {
+    border: none;
+    background: none;
+    transition: all 0.3s ease-out;
+  }
+  p {
+    color: white;
+    font-size: 22px;
+    padding: 1vh;
+  }
+}
+
+.ingrid-number {
+  background-color: #e07f32;
+}
+
+.calories {
+  background-color: #cc2424;
+}
+
+.ingrid-number,
+.calories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.big-number {
+  font-size: 8.2vh;
+  color: white;
+  margin-bottom: 0.5vh;
+}
+
+.small-white {
+  color: white;
+  font-size: 28px;
+  padding-top: 10px;
+}
+
+.protein,
+.carbs,
+.fat,
+.fiber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  height: 22vh;
+}
+
+.protein {
+  background-color: #f98a30;
+  margin-bottom: 2vh;
+}
+
+.carbs {
+  background-color: #d76010;
+  margin-bottom: 2vh;
+}
+
+.fat {
+  background-color: #c25213;
+}
+
+.fiber {
+  background-color: #ffc869;
+}
