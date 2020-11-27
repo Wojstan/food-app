@@ -21,7 +21,7 @@ export default function List({ img, title, data, cssName }) {
       </header>
       <div className="collapse" id={title}>
         {data.map((row, i) => (
-          <p>
+          <p key={i}>
             {i + 1}. {row}
           </p>
         ))}

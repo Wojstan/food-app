@@ -19,8 +19,8 @@ const MealTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
-            <tr className="item-table">
+          {data.map((row, i) => (
+            <tr key={i} className="item-table">
               <td>{row.product}</td>
               <td>{row.weight}</td>
               <td>{row.shopweight}</td>

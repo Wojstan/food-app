@@ -6,25 +6,16 @@ import arrowRight from "../static/img/right.png";
 
 import MealLink from "./MealLink";
 
-function Home() {
-  const date = new Date();
-  const [today, setToday] = useState(date.getDay());
-  const [food, setFood] = useState({ meals: [] });
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getFood } from "../Actions/food";
+
+export const Home = ({ getFood, food }) => {
+  const [today, setToday] = useState(new Date().getDay());
 
   useEffect(() => {
-    const fetchData = async () => {
-      const getResponse = await fetch(
-        `http://localhost:4454/food/${today + 1}`
-      );
-      const repsonseData = await getResponse.json();
-      setFood(repsonseData);
-    };
-
-    fetchData();
-    return function cleanup() {
-      setFood({ meals: [] });
-    };
-  }, [today]);
+    getFood(today);
+  }, [today, getFood]);
 
   const changeDay = (flag) => {
     if (flag === false) {
@@ -78,6 +69,15 @@ function Home() {
       <img src={HomePicture} alt="" />
     </div>
   );
-}
+};
 
-export default Home;
+Home.propTypes = {
+  food: PropTypes.object.isRequired,
+  getFood: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  food: state.food.food,
+});
+
+export default connect(mapStateToProps, { getFood })(Home);

@@ -3,7 +3,7 @@ import arrow from "../static/img/arrow.png";
 
 function MealLink({ title, number }) {
   return (
-    <li>
+    <li key={number}>
       <div className="number">
         <h3>{number}</h3>
       </div>
